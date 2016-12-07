@@ -80,7 +80,6 @@ public class UserController {
 
         return "base-layout";
     }
-
     @GetMapping("/contact")
     public String contact(Model model) {
         model.addAttribute("view", "user/contact");
@@ -90,6 +89,7 @@ public class UserController {
     @GetMapping("/photo")
     public String photo(Model model) {
         model.addAttribute("view", "user/photo");
+
 
         return "base-layout";
     }
@@ -121,6 +121,7 @@ public class UserController {
 
         return "base-layout";
     }
+
 
 }
 
