@@ -10,11 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import softuniBlog.bindingModel.FileBindingModel;
 import softuniBlog.bindingModel.UserBindingModel;
 import softuniBlog.entity.Role;
 import softuniBlog.entity.User;
@@ -24,6 +22,7 @@ import softuniBlog.repository.UserRepository;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -121,6 +120,38 @@ public class UserController {
 
         return "base-layout";
     }
+    @GetMapping("/file/upload")
+    public String file (Model model){
+        model.addAttribute("view","file/upload");
+
+        return "base-layout";
+
+    }
+    @PostMapping("/file/upload")
+    public String UploadFile (FileBindingModel fileBindingModel,
+                              HttpServletRequest servletRequest){
+
+
+        MultipartFile file = fileBindingModel.getPicture();
+        if (file!=null){
+
+            String originalFileName = file.getOriginalFilename();
+            File imageFile = new File("C:\\Users\\Emil\\Desktop\\Git\\blog1\\blog\\src\\main\\resources\\static\\images\\", originalFileName);
+            String status = "Success";
+            System.out.println("File" +originalFileName+" has been added successfully");
+
+            try {
+                file.transferTo(imageFile);
+             //article.setImagePath(imageFile.getPath());
+           } catch (IOException e){
+                e.printStackTrace();
+                status="Fail";
+            }
+        }
+        return "redirect:/";
+    }
+
+
 
 
 }

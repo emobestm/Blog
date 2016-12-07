@@ -1,6 +1,15 @@
 package softuniBlog.entity;
 
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
+import softuniBlog.controller.ArticleController;
+
 import javax.persistence.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,6 +39,7 @@ public class Article {
         this.author = author;
         this.category=category;
         this.tags = tags;
+
     }
 
     @Id
@@ -46,6 +56,7 @@ public class Article {
     public String getTitle() {
         return title;
     }
+
 
     public void setTitle(String title) {
         this.title = title;
@@ -97,4 +108,6 @@ public class Article {
                 .getContent().substring(0, this
                         .getContent().length() / 2) + "...";
     }
+
+
 }
