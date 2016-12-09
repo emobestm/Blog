@@ -1,0 +1,26 @@
+<main xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml" >
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-horizontal" th:action="@{/file/upload}" method="post"
+            enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Upload</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="image">File</label>
+                            <div class="col-sm-4">
+                                <input type="file" id="image" name="picture"/>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4-offset-4">
+                            <a class="btn btn-default" th:href="@{/}">Cancel</a>
+                            <input value="Submit" type="submit" class="btn btn-default"/>
+
+
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
