@@ -1,4 +1,6 @@
-<main xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<main xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:mvc="http://www.springframework.org/schema/mvc">
+    <mvc:resources mapping="../../images/**" location="../../images/"/>
     <div class="container body-content span=8 offset=2">
         <div class="well">
 
@@ -6,11 +8,13 @@
 
                 <p><h4 style="color: #000000"></h4></p>
                   <h1>Why its happen???</h1>
-                <body >
-                <img th:src="@{../../static/images/pic03.jpg}" height="308" width="680" />
-                <img src="../../static/images/cod3.jpg"/>
+                <body>
 
+                <img th:src="@{../../images/pic03.jpg}" height="200" width="608" />
+                <img src="../../images/cod3.jpg" width="308" height="400"/>
+                <img src="../../images/hildebrantmed.bmp"/>
                 </body>
+
 
             </form>
 

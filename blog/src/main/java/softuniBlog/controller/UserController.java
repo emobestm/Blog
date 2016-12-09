@@ -92,6 +92,13 @@ public class UserController {
 
         return "base-layout";
     }
+    @GetMapping("/video")
+    public String video(Model model) {
+        model.addAttribute("view", "user/video");
+
+
+        return "base-layout";
+    }
 
 
 
@@ -136,7 +143,7 @@ public class UserController {
         if (file!=null){
 
             String originalFileName = file.getOriginalFilename();
-            File imageFile = new File("C:\\Users\\Emil\\Desktop\\Git\\blog1\\blog\\src\\main\\resources\\static\\images\\", originalFileName);
+            File imageFile = new File("C:\\Users\\Emil\\Desktop\\Git\\blog1\\blog\\src\\main\\resources\\images", originalFileName);
             String status = "Success";
             System.out.println("File" +originalFileName+" has been added successfully");
 
@@ -150,6 +157,7 @@ public class UserController {
         }
         return "redirect:/";
     }
+
 
 
 
