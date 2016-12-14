@@ -5489,7 +5489,7 @@ button.list-group-item-danger.active:focus {
   border-top: 1px solid #dddddd;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  position: fi;bottom: 0;left: 0;right: 0;
+  position: fixed;bottom: 0;left: 0;right: 0;
 }
 .panel > .list-group,
 .panel > .panel-collapse > .list-group {

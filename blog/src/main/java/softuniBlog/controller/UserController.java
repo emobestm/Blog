@@ -90,6 +90,7 @@ public class UserController {
         model.addAttribute("view", "user/photo");
 
 
+
         return "base-layout";
     }
     @GetMapping("/video")
