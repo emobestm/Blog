@@ -14,15 +14,19 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import softuniBlog.bindingModel.FileBindingModel;
 import softuniBlog.bindingModel.UserBindingModel;
+import softuniBlog.entity.Category;
 import softuniBlog.entity.Role;
 import softuniBlog.entity.User;
+import softuniBlog.repository.CategoryRepository;
 import softuniBlog.repository.RoleRepository;
 import softuniBlog.repository.UserRepository;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -31,7 +35,6 @@ public class UserController {
     RoleRepository roleRepository;
     @Autowired
     UserRepository userRepository;
-
 
 
     @GetMapping("/register")
@@ -79,20 +82,22 @@ public class UserController {
 
         return "base-layout";
     }
+
     @GetMapping("/contact")
     public String contact(Model model) {
         model.addAttribute("view", "user/contact");
 
         return "base-layout";
     }
+
     @GetMapping("/photo")
     public String photo(Model model) {
         model.addAttribute("view", "user/photo");
 
 
-
         return "base-layout";
     }
+
     @GetMapping("/video")
     public String video(Model model) {
         model.addAttribute("view", "user/video");
@@ -100,7 +105,6 @@ public class UserController {
 
         return "base-layout";
     }
-
 
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -128,41 +132,47 @@ public class UserController {
 
         return "base-layout";
     }
+
     @GetMapping("/file/upload")
-    public String file (Model model){
-        model.addAttribute("view","file/upload");
+    public String file(Model model) {
+        model.addAttribute("view", "file/upload");
 
         return "base-layout";
 
     }
+
     @PostMapping("/file/upload")
-    public String UploadFile (FileBindingModel fileBindingModel,
-                              HttpServletRequest servletRequest){
+    public String UploadFile(FileBindingModel fileBindingModel,
+                             HttpServletRequest servletRequest) {
 
 
         MultipartFile file = fileBindingModel.getPicture();
-        if (file!=null){
+        if (file != null) {
 
             String originalFileName = file.getOriginalFilename();
             File imageFile = new File("C:\\Users\\Emil\\Desktop\\Git\\blog1\\blog\\src\\main\\resources\\images", originalFileName);
             String status = "Success";
-            System.out.println("File" +originalFileName+" has been added successfully");
+            System.out.println("File" + originalFileName + " has been added successfully");
 
             try {
                 file.transferTo(imageFile);
-             //article.setImagePath(imageFile.getPath());
-           } catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
-                status="Fail";
+                status = "Fail";
             }
         }
         return "redirect:/";
     }
 
+    @GetMapping("/search")
+    public String search(Model model) {
 
 
+        model.addAttribute("view", "user/search");
 
+        return "base-layout";
 
+    }
 }
 
 

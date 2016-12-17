@@ -1,4 +1,4 @@
-<header  th:fragment="header">
+<header th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -75,6 +75,37 @@
                         <a th:href="@{/logout}">
                             Logout
                         </a>
+                    </li>
+                    <li>
+                        <head>
+                            <style>
+                                input[type=text] {
+                                    width: 130px;height: 45px;
+                                    box-sizing: border-box;
+                                    border: 2px solid #ccc;
+                                    border-radius: 4px;
+                                    font-size: 16px;
+                                    background: white no-repeat 10px 10px;
+                                    padding: 12px 20px 12px 40px;
+                                    -webkit-transition: width 0.4s ease-in-out;
+                                    transition: width 0.4s ease-in-out;
+                                }
+                                input[type=text]:focus {
+                                    width: 130px;
+                                }
+                            </style>
+                        </head>
+                        <body>
+
+                        <form>
+                            Search: <input type="text" name="search" placeholder="Search.." />
+                            <button class="btn btn-default" type="submit" style="color: inherit"><a
+                                    th:href="@{/search}">Go</a></button>
+
+
+                        </form>
+
+                        </body>
                     </li>
                 </ul>
             </div>
