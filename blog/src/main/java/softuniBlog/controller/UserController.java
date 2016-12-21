@@ -167,7 +167,6 @@ public class UserController {
     @GetMapping("/search")
     public String search(Model model) {
 
-
         model.addAttribute("view", "user/search");
 
         return "base-layout";
